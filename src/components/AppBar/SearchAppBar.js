@@ -3,12 +3,11 @@ import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Button, Menu, MenuItem } from "@mui/material";
+import { Container, Menu, MenuItem } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -64,69 +63,75 @@ export default function SearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
-              />
-            </Search>
-            <Typography
-              sx={{
-                mx: "20px",
-                cursor: "pointer",
-                color: "inherit",
-              }}
-            >
-              Home
-            </Typography>
-            {/* Dropdown */}
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-            >
-              <MenuItem onClose={handleClose}>Case 1</MenuItem>
-              <MenuItem onClose={handleClose}>Case 2</MenuItem>
-            </Menu>
-            <Typography
-              sx={{
-                marginRight: "20px",
-                cursor: "pointer",
-                color: "inherit",
-              }}
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-            >
-              Case
-            </Typography>
-          </Box>
-        </Toolbar>
+      <AppBar position="static" color="inherit">
+        <Container>
+          <Toolbar>
+            <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
+              <Link to="/">
+                <img
+                  src="/assets/Logo/logo_poolapack_new.png"
+                  width="120px"
+                  alt="Logo"
+                />
+              </Link>
+            </Box>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </Search>
+              <Link to="/" style={{ textDecoration: "none", color: "#616161" }}>
+                <Typography
+                  sx={{
+                    mx: "20px",
+                    cursor: "pointer",
+                    color: "inherit",
+                  }}
+                >
+                  Home
+                </Typography>
+              </Link>
+              {/* Dropdown */}
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+              >
+                <Link
+                  to="/case-1"
+                  style={{ textDecoration: "none", color: "#616161" }}
+                >
+                  <MenuItem onClose={handleClose}>Case 1</MenuItem>
+                </Link>
+                <Link
+                  to="/case-2"
+                  style={{ textDecoration: "none", color: "#616161" }}
+                >
+                  <MenuItem onClose={handleClose}>Case 2</MenuItem>
+                </Link>
+              </Menu>
+              <Typography
+                sx={{
+                  marginRight: "20px",
+                  cursor: "pointer",
+                  color: "#616161",
+                }}
+                aria-controls={open ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
+              >
+                Case
+              </Typography>
+            </Box>
+          </Toolbar>
+        </Container>
       </AppBar>
     </Box>
   );

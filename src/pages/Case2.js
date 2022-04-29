@@ -15,6 +15,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import SearchAppBar from "../components/AppBar/SearchAppBar";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -84,6 +85,7 @@ export default function Case2() {
   console.log(comments);
   return (
     <>
+      <SearchAppBar />
       <Container>
         {comments.map((comment) => (
           <Card sx={{ my: 5 }} key={comment.id}>
